@@ -32,7 +32,7 @@ class MainMenu(GameStatus):
 
                 if event.key == pygame.K_RETURN:
 
-                    self.game.ChangeStatus(self.game.Game_status)
+                    self.game.ChangeStatus(self.game.GameStatus)
 
     
     def Updates(self):
@@ -75,7 +75,7 @@ class PauseMenu(GameStatus):
             
                 if event.key == pygame.K_ESCAPE:  # "ESC" para reanudar
             
-                    self.game.ChangeStatus(self.game.game_status)
+                    self.game.ChangeStatus(self.game.GameStatus)
 
     def Updates(self):
     

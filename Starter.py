@@ -1,8 +1,10 @@
-import pygame, sys
+import pygame
 
 from Menus import MainMenu, PauseMenu
 
 from Main import Game
+
+pygame.font.init()
 
 class AppGame:
 
@@ -21,10 +23,14 @@ class AppGame:
 
 
     def ChangeStatus(self, new_status):
+        '''
+        Este método permite cambiar el estado del juego al introducir la pausa y otros menús.
+
+        '''
 
         self.current_status = new_status
 
-    def run_app(self):
+    def run(self):
 
         while True:
             

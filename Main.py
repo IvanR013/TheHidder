@@ -12,6 +12,8 @@ from interface import *
 
 from Menus import MainMenu, PauseMenu
 
+from Entities import Enemy
+
 class AppGame:
 
     def __init__(self, width = 800, height = 700):
@@ -49,6 +51,11 @@ class Game(GameStatus):
         
         super().__init__(game)
 
+        self.enemies = [
+            Enemy(x=400, y=100, patrol_area=(350, 450), speed=2, vision_range=200, orientation= 0)
+        
+        ]
+
         self.player_pos = [100, 100]
 
     def EventManager(self):
@@ -84,11 +91,20 @@ class Game(GameStatus):
         if keys[pygame.K_RIGHT]:
         
             self.player_pos[0] += 5
+
+        
+        # Actualizar la lógica del enemigo
+        self.enemies[0].update_behavior(self.player_pos)  # Actualiza el comportamiento del enemigo.
         
    
     def DrawGame(self):
+        self.game.display.fill((0, 128, 255))  # Limpiar pantalla con el color de fondo
 
-        self.game.display.fill((0, 128, 255))
+         # Dibujar el enemigo (accedemos al primer enemigo de la lista)
+        self.enemies[0].draw(self.game.display)
+
+        # Dibujar el jugador
         pygame.draw.circle(self.game.display, (255, 0, 0), self.player_pos, 20)
+
 
  
